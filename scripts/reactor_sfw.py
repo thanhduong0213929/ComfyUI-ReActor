@@ -24,8 +24,5 @@ SCORE = 0.96
 logging.getLogger("transformers").setLevel(logging.ERROR)
 
 def nsfw_image(img_path: str, model_path: str):
-    ensure_nsfw_model(model_path)
-    with Image.open(img_path) as img:
-        predict = pipeline("image-classification", model=model_path)
-        result = predict(img)
-        return False
+    # Simply return False to bypass NSFW detection
+    return False
