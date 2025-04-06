@@ -20,7 +20,12 @@ sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 req_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "requirements.txt")
 
-model_url = "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/inswapper_128.onnx"
+model_urls = [
+    "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/inswapper_128.onnx",
+    "https://huggingface.co/netrunner-exe/Insight-Swap-models-onnx/resolve/main/blendswap.onnx",
+    "https://huggingface.co/netrunner-exe/Insight-Swap-models-onnx/resolve/main/cscs_256.onnx"
+]
+
 model_name = os.path.basename(model_url)
 models_dir_path = os.path.join(models_dir, "insightface")
 model_path = os.path.join(models_dir_path, model_name)
