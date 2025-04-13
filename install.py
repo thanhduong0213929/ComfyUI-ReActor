@@ -26,7 +26,7 @@ model_urls = [
     "https://huggingface.co/netrunner-exe/Insight-Swap-models-onnx/resolve/main/cscs_256.onnx"
 ]
 
-model_name = os.path.basename(model_url)
+model_name = os.path.basename(model_urls)
 models_dir_path = os.path.join(models_dir, "insightface")
 model_path = os.path.join(models_dir_path, model_name)
 
