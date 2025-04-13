@@ -20,25 +20,10 @@ sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 req_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "requirements.txt")
 
-model_urls = [
-    "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/inswapper_128.onnx",
-    "https://huggingface.co/netrunner-exe/Insight-Swap-models-onnx/resolve/main/blendswap.onnx",
-    "https://huggingface.co/netrunner-exe/Insight-Swap-models-onnx/resolve/main/cscs_256.onnx"
-]
-
-# Create models directory if it doesn't exist
+model_url = "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/inswapper_128.onnx"
+model_name = os.path.basename(model_url)
 models_dir_path = os.path.join(models_dir, "insightface")
-if not os.path.exists(models_dir_path):
-    os.makedirs(models_dir_path)
-
-# Download each model in the list
-for model_url in model_urls:
-    model_name = os.path.basename(model_url)
-    model_path = os.path.join(models_dir_path, model_name)
-    
-    if not os.path.exists(model_path):
-        print(f"[ReActor] Downloading {model_name}...")
-        download(model_url, model_path, model_name)
+model_path = os.path.join(models_dir_path, model_name)
 
 def run_pip(*args):
     subprocess.run([sys.executable, "-m", "pip", "install", "--no-warn-script-location", *args])
