@@ -26,9 +26,19 @@ model_urls = [
     "https://huggingface.co/netrunner-exe/Insight-Swap-models-onnx/resolve/main/cscs_256.onnx"
 ]
 
-model_name = os.path.basename(model_urls)
+# Create models directory if it doesn't exist
 models_dir_path = os.path.join(models_dir, "insightface")
-model_path = os.path.join(models_dir_path, model_name)
+if not os.path.exists(models_dir_path):
+    os.makedirs(models_dir_path)
+
+# Download each model in the list
+for model_url in model_urls:
+    model_name = os.path.basename(model_url)
+    model_path = os.path.join(models_dir_path, model_name)
+    
+    if not os.path.exists(model_path):
+        print(f"[ReActor] Downloading {model_name}...")
+        download(model_url, model_path, model_name)
 
 def run_pip(*args):
     subprocess.run([sys.executable, "-m", "pip", "install", "--no-warn-script-location", *args])
