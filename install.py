@@ -64,9 +64,11 @@ def download(url, path, name):
 if not os.path.exists(models_dir_path):
     os.makedirs(models_dir_path)
 
-if not os.path.exists(model_path):
+if not os.path.exists(model_path1):
     download(model_url1, model_path1, model_name1)
+if not os.path.exists(model_path2):
     download(model_url2, model_path2, model_name2)
+if not os.path.exists(model_path2):
     download(model_url3, model_path3, model_name3)
 
 with open(req_file) as file:
