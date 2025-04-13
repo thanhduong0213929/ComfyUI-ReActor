@@ -20,10 +20,16 @@ sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 req_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "requirements.txt")
 
-model_url = "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/inswapper_128.onnx"
-model_name = os.path.basename(model_url)
+model_url1 = "https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/inswapper_128.onnx"
+model_url2 = "https://huggingface.co/netrunner-exe/Insight-Swap-models-onnx/resolve/main/blendswap.onnx"
+model_url3 = "https://huggingface.co/netrunner-exe/Insight-Swap-models-onnx/resolve/main/cscs_256.onnx"
+model_name1 = os.path.basename(model_url1)
+model_name2 = os.path.basename(model_url2)
+model_name3 = os.path.basename(model_url3)
 models_dir_path = os.path.join(models_dir, "insightface")
-model_path = os.path.join(models_dir_path, model_name)
+model_path1 = os.path.join(models_dir_path, model_name1)
+model_path2 = os.path.join(models_dir_path, model_name2)
+model_path3 = os.path.join(models_dir_path, model_name3)
 
 def run_pip(*args):
     subprocess.run([sys.executable, "-m", "pip", "install", "--no-warn-script-location", *args])
@@ -59,7 +65,9 @@ if not os.path.exists(models_dir_path):
     os.makedirs(models_dir_path)
 
 if not os.path.exists(model_path):
-    download(model_url, model_path, model_name)
+    download(model_url1, model_path1, model_name1)
+    download(model_url2, model_path2, model_name2)
+    download(model_url3, model_path3, model_name3)
 
 with open(req_file) as file:
     try:
